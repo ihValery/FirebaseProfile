@@ -21,6 +21,7 @@ struct AuthenticationView: View {
         ZStack {
             Image("bgfile")
                 .resizable()
+                .rotationEffect(.degrees(180))
                 .ignoresSafeArea()
             
             VStack {

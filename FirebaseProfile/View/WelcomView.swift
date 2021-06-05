@@ -16,7 +16,6 @@ struct WelcomView: View {
         ZStack {
             Image("bgfile")
                 .resizable()
-//                .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
             
             VStack {
