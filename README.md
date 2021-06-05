@@ -11,4 +11,4 @@
 - Выбор фотки и последующая загрузка в профайл.
 - BlurView наконецто. (дизайн не для примера)
 
-<img src="https://github.com/ihValery/CombineFirebase/blob/main/CombineLesson39Preview.png?raw=true"></a>
+<img src="https://github.com/ihValery/FirebaseProfile/blob/feature/firebaseProfile.png?raw=true"></a>
