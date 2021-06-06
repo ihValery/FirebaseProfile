@@ -20,10 +20,11 @@ struct WelcomView: View {
             
             VStack {
                 ImagePreview()
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                 
                 VStack {
                     VStack {
-                        Text("Hello user").bold()
+                        Text(session.user == nil ? "" : "Welcome back").bold()
                         Text(session.userName)
                         Text(session.user?.email ?? "")
                     }
@@ -31,21 +32,41 @@ struct WelcomView: View {
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .background(BlurView().cornerRadius(25))
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     .padding(.vertical)
                     
-                    Button {
-                        session.sighOut()
-                    } label: {
-                        Text("Sign Out")
-                            .font(.title)
-                            .frame(maxWidth: .infinity, maxHeight: 48)
-                            .foregroundColor(.white)
-                            .background(BlurView().cornerRadius(25))
-                            .frame(width: 300)
+                    VStack {
+                        Button {
+                            session.getMeUrlAndName()
+                        } label: {
+                            Text("print Document")
+                                .font(.title)
+                                .frame(maxWidth: .infinity, maxHeight: 48)
+                                .foregroundColor(.white)
+                                .background(BlurView().cornerRadius(25))
+                                .frame(width: 300)
+                                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+                        }
                     }
-                    .disabled(session.user == nil)
-                    .opacity(session.user == nil ? 0 : 1)
-                    .padding(.horizontal)
+                    .padding(.vertical)
+                    
+                    
+                    VStack {
+                        Button {
+                            session.sighOut()
+                        } label: {
+                            Text("Sign Out")
+                                .font(.title)
+                                .frame(maxWidth: .infinity, maxHeight: 48)
+                                .foregroundColor(.white)
+                                .background(BlurView().cornerRadius(25))
+                                .frame(width: 300)
+                                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+                        }
+                        .disabled(session.user == nil)
+                        .opacity(session.user == nil ? 0 : 1)
+                        .padding(.horizontal)
+                    }
                 }
             }
         }

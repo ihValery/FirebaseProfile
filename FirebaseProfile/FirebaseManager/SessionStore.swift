@@ -21,7 +21,7 @@ class SessionStore: ObservableObject {
         //firebase рекомендует получать текущего пользователя - установив прослушивателя для объекта Auth:
         _ = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             if let user = user {
-                self?.user = User(uid: user.uid, email: user.email, userName: user.displayName)
+                self?.user = User(uid: user.uid, email: user.email, userName: user.displayName, avatarURL: user.photoURL)
                 self?.userName = user.displayName ?? "noname"
                 self?.isSignIn = false
             } else {
@@ -30,6 +30,27 @@ class SessionStore: ObservableObject {
                 self?.isSignIn = true
             }
         }
+    }
+    
+    func getMeUrlAndName() {
+        let userRef = Firestore.firestore().collection("users")
+        let currentDoc = userRef.whereField("uid", isEqualTo: Auth.auth().currentUser?.uid ?? "Хьюстон у нас проблемы")
+
+        currentDoc.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+//                userName = querySnapshot?.documents(da)
+                for document in querySnapshot!.documents {
+                    self.userName = document.data()["displayName"] as! String
+                    print(self.userName)
+//                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
+        
+        
+//                https://firebase.google.com/docs/firestore/query-data/get-data
     }
     
     func signIn(email: String, password: String) {
@@ -54,8 +75,8 @@ class SessionStore: ObservableObject {
                 switch resultUpload {
                     case .success(let url):
                         let db = Firestore.firestore()
-                        db.collection("users").addDocument(data: ["userName" : name,
-                                                                  "avatarURL" : url.absoluteString,
+                        db.collection("users").addDocument(data: ["displayName" : name,
+                                                                  "photoURL" : url.absoluteString,
                                                                   "uid" : result.user.uid])
                         { error in
                             if let error = error {

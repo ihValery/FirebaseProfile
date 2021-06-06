@@ -21,19 +21,18 @@ struct AuthenticationView: View {
         ZStack {
             Image("bgfile")
                 .resizable()
-                .rotationEffect(.degrees(180))
                 .ignoresSafeArea()
             
             VStack {
                 VStack {
-                    ZStack {
+                    VStack {
                         Image(uiImage: self.image)
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 300, height: 300)
-                            .clipped()
                             .background(BlurView())
-                            .cornerRadius(25)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
                        
                     }
                     .onTapGesture {
@@ -48,19 +47,22 @@ struct AuthenticationView: View {
                         TextField("Name", text: $name)
                             .padding(.horizontal).padding(.vertical, 5)
                             .background(BlurView().cornerRadius(25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                         TextField("Email", text: $email)
                             .padding(.horizontal).padding(.vertical, 5)
                             .background(BlurView().cornerRadius(25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                         TextField("Password", text: $password)
                             .padding(.horizontal).padding(.vertical, 5)
                             .background(BlurView().cornerRadius(25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     }
                     .frame(width: 300)
                 }
                 .font(.title)
                 .padding(40)
                 
-                VStack(spacing: 10) {
+                VStack(spacing: 20) {
                     Button {
                         session.signIn(email: email, password: password)
                     } label: {
@@ -69,6 +71,7 @@ struct AuthenticationView: View {
                             .frame(maxWidth: .infinity, maxHeight: 48)
                             .foregroundColor(.white)
                             .background(BlurView().cornerRadius(25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     }
                     
                     Button {
@@ -79,6 +82,7 @@ struct AuthenticationView: View {
                             .frame(maxWidth: .infinity, maxHeight: 48)
                             .foregroundColor(.white)
                             .background(BlurView().cornerRadius(25))
+                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     }
                 }
                 .frame(width: 300)
