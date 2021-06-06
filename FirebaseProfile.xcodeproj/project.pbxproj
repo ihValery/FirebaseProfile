@@ -10,6 +10,8 @@
 		8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DC266D351900BF70D9 /* AuthTextField.swift */; };
 		8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DE266D35A800BF70D9 /* AuthButton.swift */; };
 		8062A8E1266D3A4F00BF70D9 /* BeautifulBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */; };
+		8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E2266D3EBA00BF70D9 /* View.swift */; };
+		8062A8E6266D484600BF70D9 /* NewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E5266D484600BF70D9 /* NewTest.swift */; };
 		8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078C85A266A58900009D2DA /* FirebaseProfile.swift */; };
 		8078C85D266A58900009D2DA /* WelcomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078C85C266A58900009D2DA /* WelcomView.swift */; };
 		8078C85F266A58930009D2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8078C85E266A58930009D2DA /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 		8062A8DC266D351900BF70D9 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8062A8DE266D35A800BF70D9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBackground.swift; sourceTree = "<group>"; };
+		8062A8E2266D3EBA00BF70D9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		8062A8E5266D484600BF70D9 /* NewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTest.swift; sourceTree = "<group>"; };
 		8078C857266A58900009D2DA /* FirebaseProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8078C85A266A58900009D2DA /* FirebaseProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProfile.swift; sourceTree = "<group>"; };
 		8078C85C266A58900009D2DA /* WelcomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomView.swift; sourceTree = "<group>"; };
@@ -82,17 +86,18 @@
 			isa = PBXGroup;
 			children = (
 				8078C85C266A58900009D2DA /* WelcomView.swift */,
+				8062A8E5266D484600BF70D9 /* NewTest.swift */,
 				8078C869266A5A290009D2DA /* AuthenticationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		80514C25266BF5A600AE98DF /* FirebaseManager */ = {
+		80514C25266BF5A600AE98DF /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
 				807C4B9D266A6EF900C3DEA5 /* SessionStore.swift */,
 			);
-			path = FirebaseManager;
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		80514C26266BF5C700AE98DF /* Helper */ = {
@@ -106,6 +111,14 @@
 				807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		8062A8E4266D3ED500BF70D9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8062A8E2266D3EBA00BF70D9 /* View.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		8078C84E266A58900009D2DA = {
@@ -130,8 +143,9 @@
 				8078C85A266A58900009D2DA /* FirebaseProfile.swift */,
 				80514C23266BF55C00AE98DF /* Model */,
 				80514C24266BF57100AE98DF /* View */,
-				80514C25266BF5A600AE98DF /* FirebaseManager */,
+				80514C25266BF5A600AE98DF /* NetworkManager */,
 				80514C26266BF5C700AE98DF /* Helper */,
+				8062A8E4266D3ED500BF70D9 /* Extension */,
 				80514C22266BF52E00AE98DF /* System32 */,
 			);
 			path = FirebaseProfile;
@@ -231,6 +245,8 @@
 				807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */,
 				807C4BA6266B8D9100C3DEA5 /* BlurViewLight.swift in Sources */,
 				8078C85D266A58900009D2DA /* WelcomView.swift in Sources */,
+				8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */,
+				8062A8E6266D484600BF70D9 /* NewTest.swift in Sources */,
 				8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */,
 				8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */,
 				8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */,

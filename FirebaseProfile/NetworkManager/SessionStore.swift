@@ -8,14 +8,16 @@
 import UIKit
 import Combine
 import Firebase
-import FirebaseStorage
-import FirebaseFirestore
+//import FirebaseStorage
+//import FirebaseFirestore
 
 class SessionStore: ObservableObject {
     @Published var isSignIn = false
     @Published var userName: String = ""
+    
     @Published var avatarURL: String = ""
-    @Published var avatarImage = UIImageView()
+    @Published var avatarData = Data()
+    
     @Published var errorMessage: String = ""
     @Published var user: User?
     
@@ -36,15 +38,14 @@ class SessionStore: ObservableObject {
     
     func downloadAvatar() {
         let avatarRef = Storage.storage().reference(forURL: avatarURL)
-//        let avatarRef = Storage.storage().reference(withPath: avatarURL)
         let megaByte = Int64(2 * 1024 * 1024)
         avatarRef.getData(maxSize: megaByte) { data, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
             } else {
-                let image = UIImage(data: data!)
-                self.avatarImage.image = image
-                print("Нееееееее")
+//                let image = UIImage(data: data!)
+                self.avatarData = data!
+                print("Скачали")
             }
         }
     }
@@ -60,11 +61,6 @@ class SessionStore: ObservableObject {
                 for document in querySnapshot!.documents {
                     self.userName = document.data()["userName"] as! String
                     self.avatarURL = document.data()["avatarURL"] as! String
-                    print("\n")
-                    print(self.userName)
-                    print(self.avatarURL)
-                    print("\n")
-//                    self.downloadAvatar()
                 }
             }
         }

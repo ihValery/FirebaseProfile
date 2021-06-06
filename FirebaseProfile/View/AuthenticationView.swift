@@ -52,7 +52,7 @@ struct AuthenticationView: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .padding()
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(selectedImage: self.$image, sourceType: .photoLibrary)

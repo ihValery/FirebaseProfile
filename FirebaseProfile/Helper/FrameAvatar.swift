@@ -15,7 +15,23 @@ struct FrameAvatar: View {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 300, height: 300)
+                .frame(maxWidth: getRect().width, maxHeight: getRect().width)
+                .clipped()
+                .background(BlurViewLight())
+                .cornerRadius(25)
+        }
+    }
+}
+
+struct FrameAvatarData: View {
+    @Binding var data: Data
+    
+    var body: some View {
+        VStack {
+            Image(uiImage: UIImage(data: data) ?? UIImage())
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(maxWidth: getRect().width, maxHeight: getRect().width)
                 .clipped()
                 .background(BlurViewLight())
                 .cornerRadius(25)

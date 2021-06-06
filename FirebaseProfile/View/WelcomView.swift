@@ -6,75 +6,46 @@
 //
 
 import SwiftUI
-import Firebase
+//import Firebase
 
 struct WelcomView: View {
     @EnvironmentObject var session: SessionStore
-
+    @State private var image = UIImage()
+    
     var body: some View {
         ZStack {
-            Image("bgfile")
-                .resizable()
-                .ignoresSafeArea()
+            BeautifulBackground(image: $image)
+            
             
             VStack {
-//                FrameAvatar()
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .foregroundColor(.gray).opacity(0.9)
-//                    .frame(width: 300, height: 300)
-//                    .clipped()
-//                    .background(BlurViewLight())
-//                    .cornerRadius(25)
-//                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+                FrameAvatarData(data: $session.avatarData)
+                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+//                Image(uiImage: UIImage(data: self.session.avatarData) ?? UIImage())
                 
                 VStack {
-                    VStack {
-                        Text(session.user == nil ? "" : "Welcome back").bold()
-                        Text(session.userName)
-                        Text(session.user?.email ?? "")
+                    Text(session.user == nil ? "" : "Welcome back").bold().padding(.bottom, 10)
+                    Text(session.userName)
+                    Text(session.user?.email ?? "")
+                }
+                .frame(maxWidth: .infinity, maxHeight: 200)
+                .font(.largeTitle)
+                .foregroundColor(.white)
+                .background(BlurViewLight().cornerRadius(25))
+                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+                .padding(.vertical)
+                
+                VStack(spacing: 15) {
+                    AuthButton(lable: "download Avatar") {
+                        session.downloadAvatar()
                     }
-                    .frame(width: 300, height: 200)
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .background(BlurViewLight().cornerRadius(25))
-                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                    .padding(.vertical)
-                    
-                    VStack {
-                        Button {
-//                            session.downloadAvatar()
-                        } label: {
-                            Text("download Avatar")
-                                .font(.title)
-                                .frame(maxWidth: .infinity, maxHeight: 48)
-                                .foregroundColor(.white)
-                                .background(BlurViewLight().cornerRadius(25))
-                                .frame(width: 300)
-                                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                        }
+                    AuthButton(lable: "Sign Out") {
+                        session.sighOut()
                     }
-                    .padding(.vertical)
-                    
-                    
-                    VStack {
-                        Button {
-                            session.sighOut()
-                        } label: {
-                            Text("Sign Out")
-                                .font(.title)
-                                .frame(maxWidth: .infinity, maxHeight: 48)
-                                .foregroundColor(.white)
-                                .background(BlurViewLight().cornerRadius(25))
-                                .frame(width: 300)
-                                .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                        }
-                        .disabled(session.user == nil)
-                        .opacity(session.user == nil ? 0 : 1)
-                        .padding(.horizontal)
-                    }
+                    .disabled(session.user == nil)
+                    .opacity(session.user == nil ? 0 : 1)
                 }
             }
+            .padding()
         }
         .onAppear {
             session.listen()
