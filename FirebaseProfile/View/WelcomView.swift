@@ -7,11 +7,10 @@
 
 import SwiftUI
 import Firebase
-import FirebaseStorage
 
 struct WelcomView: View {
     @EnvironmentObject var session: SessionStore
-    
+
     var body: some View {
         ZStack {
             Image("bgfile")
@@ -19,8 +18,15 @@ struct WelcomView: View {
                 .ignoresSafeArea()
             
             VStack {
-                ImagePreview()
-                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
+//                FrameAvatar()
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .foregroundColor(.gray).opacity(0.9)
+//                    .frame(width: 300, height: 300)
+//                    .clipped()
+//                    .background(BlurViewLight())
+//                    .cornerRadius(25)
+//                    .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                 
                 VStack {
                     VStack {
@@ -31,19 +37,19 @@ struct WelcomView: View {
                     .frame(width: 300, height: 200)
                     .font(.largeTitle)
                     .foregroundColor(.white)
-                    .background(BlurView().cornerRadius(25))
+                    .background(BlurViewLight().cornerRadius(25))
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     .padding(.vertical)
                     
                     VStack {
                         Button {
-                            session.getMeUrlAndName()
+//                            session.downloadAvatar()
                         } label: {
-                            Text("print Document")
+                            Text("download Avatar")
                                 .font(.title)
                                 .frame(maxWidth: .infinity, maxHeight: 48)
                                 .foregroundColor(.white)
-                                .background(BlurView().cornerRadius(25))
+                                .background(BlurViewLight().cornerRadius(25))
                                 .frame(width: 300)
                                 .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                         }
@@ -59,7 +65,7 @@ struct WelcomView: View {
                                 .font(.title)
                                 .frame(maxWidth: .infinity, maxHeight: 48)
                                 .foregroundColor(.white)
-                                .background(BlurView().cornerRadius(25))
+                                .background(BlurViewLight().cornerRadius(25))
                                 .frame(width: 300)
                                 .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                         }
@@ -76,6 +82,7 @@ struct WelcomView: View {
         
         .sheet(isPresented: $session.isSignIn) {
             AuthenticationView()
+                .environmentObject(SessionStore())
         }
     }
 }

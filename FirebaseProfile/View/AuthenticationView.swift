@@ -9,84 +9,50 @@ import SwiftUI
 import Firebase
 
 struct AuthenticationView: View {
-    @State var name: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
+    @State private var name: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
     @State private var image = UIImage()
-    @Environment (\.presentationMode) var presentationMode
-    @EnvironmentObject var session: SessionStore
     @State private var isShowPhotoLibrary = false
+    
+    @Environment (\.presentationMode) private var presentationMode
+    @EnvironmentObject private var session: SessionStore
     
     var body: some View {
         ZStack {
-            Image("bgfile")
-                .resizable()
-                .ignoresSafeArea()
+            BeautifulBackground(image: $image)
             
             VStack {
-                VStack {
-                    VStack {
-                        Image(uiImage: self.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 300, height: 300)
-                            .background(BlurView())
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.white, lineWidth: 1))
-                       
-                    }
+                FrameAvatar(image: $image)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.white, lineWidth: 1))
+                    
                     .onTapGesture {
                         isShowPhotoLibrary = true
                     }
-                    .padding()
-                    
-                    Text(session.errorMessage)
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                    VStack {
-                        TextField("Name", text: $name)
-                            .padding(.horizontal).padding(.vertical, 5)
-                            .background(BlurView().cornerRadius(25))
-                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                        TextField("Email", text: $email)
-                            .padding(.horizontal).padding(.vertical, 5)
-                            .background(BlurView().cornerRadius(25))
-                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                        TextField("Password", text: $password)
-                            .padding(.horizontal).padding(.vertical, 5)
-                            .background(BlurView().cornerRadius(25))
-                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-                    }
-                    .frame(width: 300)
-                }
-                .font(.title)
-                .padding(40)
                 
-                VStack(spacing: 20) {
-                    Button {
+                Text(session.errorMessage)
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                
+                VStack {
+                    AuthTextField(name: "Name", field: $name)
+                    AuthTextField(name: "Email", field: $email)
+                    AuthTextField(name: "Password", field: $password)
+                }
+                .padding(.vertical, 40)
+                
+                VStack(spacing: 15) {
+                    AuthButton(lable: "Sign In") {
                         session.signIn(email: email, password: password)
-                    } label: {
-                        Text("Sign In")
-                            .font(.title)
-                            .frame(maxWidth: .infinity, maxHeight: 48)
-                            .foregroundColor(.white)
-                            .background(BlurView().cornerRadius(25))
-                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     }
-                    
-                    Button {
+                    AuthButton(lable: "Sign Up") {
                         session.signUp(email: email, password: password, name: name, photo: image)
-                    } label: {
-                        Text("Sign Up")
-                            .font(.title)
-                            .frame(maxWidth: .infinity, maxHeight: 48)
-                            .foregroundColor(.white)
-                            .background(BlurView().cornerRadius(25))
-                            .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
                     }
                 }
-                .frame(width: 300)
             }
+            .padding(.horizontal)
         }
         .sheet(isPresented: $isShowPhotoLibrary) {
             ImagePicker(selectedImage: self.$image, sourceType: .photoLibrary)
@@ -96,7 +62,9 @@ struct AuthenticationView: View {
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
-            .environmentObject(SessionStore())
+        Group {
+            AuthenticationView()
+                .environmentObject(SessionStore())
+        }
     }
 }

@@ -14,78 +14,95 @@ import FirebaseFirestore
 class SessionStore: ObservableObject {
     @Published var isSignIn = false
     @Published var userName: String = ""
+    @Published var avatarURL: String = ""
+    @Published var avatarImage = UIImageView()
     @Published var errorMessage: String = ""
     @Published var user: User?
     
     func listen() {
         //firebase рекомендует получать текущего пользователя - установив прослушивателя для объекта Auth:
-        _ = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+        _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                self?.user = User(uid: user.uid, email: user.email, userName: user.displayName, avatarURL: user.photoURL)
-                self?.userName = user.displayName ?? "noname"
-                self?.isSignIn = false
+                self.user = User(uid: user.uid, email: user.email, userName: user.displayName, avatarURL: user.photoURL)
+                self.isSignIn = false
+                self.getMeUrlAndName()
+//                self?.downloadAvatar()
             } else {
-                self?.user = nil
-                self?.userName = ""
-                self?.isSignIn = true
+                self.user = nil
+                self.isSignIn = true
+            }
+        }
+    }
+    
+    func downloadAvatar() {
+        let avatarRef = Storage.storage().reference(forURL: avatarURL)
+//        let avatarRef = Storage.storage().reference(withPath: avatarURL)
+        let megaByte = Int64(2 * 1024 * 1024)
+        avatarRef.getData(maxSize: megaByte) { data, error in
+            if let error = error {
+                self.errorMessage = error.localizedDescription
+            } else {
+                let image = UIImage(data: data!)
+                self.avatarImage.image = image
+                print("Нееееееее")
             }
         }
     }
     
     func getMeUrlAndName() {
         let userRef = Firestore.firestore().collection("users")
-        let currentDoc = userRef.whereField("uid", isEqualTo: Auth.auth().currentUser?.uid ?? "Хьюстон у нас проблемы")
+        let currentDoc = userRef.whereField("uid", isEqualTo: user?.uid ?? "Хьюстон у нас проблемы")
 
         currentDoc.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-//                userName = querySnapshot?.documents(da)
                 for document in querySnapshot!.documents {
-                    self.userName = document.data()["displayName"] as! String
+                    self.userName = document.data()["userName"] as! String
+                    self.avatarURL = document.data()["avatarURL"] as! String
+                    print("\n")
                     print(self.userName)
-//                    print("\(document.documentID) => \(document.data())")
+                    print(self.avatarURL)
+                    print("\n")
+//                    self.downloadAvatar()
                 }
             }
         }
-        
-        
-//                https://firebase.google.com/docs/firestore/query-data/get-data
     }
     
     func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
+        Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error {
-                self?.errorMessage = error.localizedDescription
+                self.errorMessage = error.localizedDescription
                 return
             }
         }
     }
     
     func signUp(email: String, password: String, name: String?, photo: UIImage) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
-                self?.errorMessage = error.localizedDescription
+                self.errorMessage = error.localizedDescription
                 return
             }
             guard let result = result else { return }
             guard let name = name else { return }
             
-            self?.upload(currenrUid: result.user.uid, photo: photo) { resultUpload in
+            self.upload(currenrUid: result.user.uid, photo: photo) { resultUpload in
                 switch resultUpload {
                     case .success(let url):
                         let db = Firestore.firestore()
-                        db.collection("users").addDocument(data: ["displayName" : name,
-                                                                  "photoURL" : url.absoluteString,
+                        db.collection("users").addDocument(data: ["userName" : name,
+                                                                  "avatarURL" : url.absoluteString,
                                                                   "uid" : result.user.uid])
                         { error in
                             if let error = error {
-                                self?.errorMessage = error.localizedDescription
+                                self.errorMessage = error.localizedDescription
                             }
                         }
 
                     case .failure(let error):
-                        self?.errorMessage = error.localizedDescription
+                        self.errorMessage = error.localizedDescription
                 }
             }
         }
@@ -107,14 +124,14 @@ class SessionStore: ObservableObject {
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
         
-        reference.putData(imageData, metadata: metaData) { [weak self] metadata, error in
+        reference.putData(imageData, metadata: metaData) { metadata, error in
             if let error = error {
-                self?.errorMessage = error.localizedDescription
+                self.errorMessage = error.localizedDescription
                 return
             }
             reference.downloadURL { url, error in
                 if let error = error {
-                    self?.errorMessage = error.localizedDescription
+                    self.errorMessage = error.localizedDescription
                     return
                 }
                 if let url = url {
