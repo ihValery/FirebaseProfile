@@ -7,13 +7,13 @@
 
 import Foundation
 
-class User {
+struct User {
     var uid: String
     var email: String?
     var userName: String?
-    var avatarURL: URL?
+    var avatarURL: String?
     
-    init(uid: String, email: String?, userName: String?, avatarURL: URL?) {
+    init(uid: String, email: String? = nil, userName: String? = nil, avatarURL: String? = nil) {
         self.uid = uid
         self.email = email
         self.userName = userName

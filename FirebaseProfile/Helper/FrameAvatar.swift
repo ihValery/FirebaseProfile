@@ -8,34 +8,17 @@
 import SwiftUI
 
 struct FrameAvatar: View {
+    var sideSquare: CGFloat { getRect().width - 40 }
     @Binding var image: UIImage
     
     var body: some View {
-        VStack {
             Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(maxWidth: getRect().width, maxHeight: getRect().width)
-                .clipped()
+                .frame(maxWidth: sideSquare, maxHeight: sideSquare)
                 .background(BlurViewLight())
-                .cornerRadius(25)
-        }
-    }
-}
-
-struct FrameAvatarData: View {
-    @Binding var data: Data
-    
-    var body: some View {
-        VStack {
-            Image(uiImage: UIImage(data: data) ?? UIImage())
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(maxWidth: getRect().width, maxHeight: getRect().width)
-                .clipped()
-                .background(BlurViewLight())
-                .cornerRadius(25)
-        }
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.white, lineWidth: 1))
     }
 }
 

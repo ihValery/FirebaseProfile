@@ -15,7 +15,8 @@ struct AuthButton: View {
         Button(action: action) {
             Text(lable)
                 .font(.title)
-                .frame(maxWidth: .infinity, maxHeight: 48)
+                .frame(height: 48)
+                .frame(maxWidth: .infinity)
                 .foregroundColor(.white)
                 .background(BlurViewLight().cornerRadius(25))
                 .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))

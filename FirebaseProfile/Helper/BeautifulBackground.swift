@@ -15,8 +15,8 @@ struct BeautifulBackground: View {
             Image("bgFon3").resizable()
             Image(uiImage: image).resizable()
         }
-            .overlay(BlurViewDark())
-            .ignoresSafeArea()
+        .overlay(BlurViewDark())
+        .ignoresSafeArea()
     }
 }
 
