@@ -6,25 +6,22 @@
 //
 
 import SwiftUI
-//import Firebase
 
 struct WelcomView: View {
-    @EnvironmentObject var session: SessionStore
+    @ObservedObject var session: SessionFirebase
     @State private var image = UIImage()
     
     var body: some View {
         ZStack {
             BeautifulBackground(image: $image)
             
-            
             VStack {
-                FrameAvatarData(data: $session.avatarData)
+                ImageWithURL(session.user?.avatarURL ?? "")
                     .overlay(RoundedRectangle(cornerRadius: 25).stroke(Color.white, lineWidth: 1))
-//                Image(uiImage: UIImage(data: self.session.avatarData) ?? UIImage())
                 
                 VStack {
-                    Text(session.user == nil ? "" : "Welcome back").bold().padding(.bottom, 10)
-                    Text(session.userName)
+                    Text(session.user == nil ? "No user" : "Welcome").bold().padding(.bottom, 10)
+                    Text(session.user?.userName ?? "")
                     Text(session.user?.email ?? "")
                 }
                 .frame(maxWidth: .infinity, maxHeight: 200)
@@ -35,14 +32,15 @@ struct WelcomView: View {
                 .padding(.vertical)
                 
                 VStack(spacing: 15) {
-                    AuthButton(lable: "download Avatar") {
-                        session.downloadAvatar()
+                    if session.user == nil {
+                        AuthButton(lable: "Sign In/Up") {
+                            session.isSignIn = true
+                        }
+                    } else {
+                        AuthButton(lable: "Sign Out") {
+                            session.sighOut()
+                        }
                     }
-                    AuthButton(lable: "Sign Out") {
-                        session.sighOut()
-                    }
-                    .disabled(session.user == nil)
-                    .opacity(session.user == nil ? 0 : 1)
                 }
             }
             .padding()
@@ -52,15 +50,13 @@ struct WelcomView: View {
         }
         
         .sheet(isPresented: $session.isSignIn) {
-            AuthenticationView()
-                .environmentObject(SessionStore())
+            AuthenticationView(session: session)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomView()
-            .environmentObject(SessionStore())
+        WelcomView(session: SessionFirebase())
     }
 }

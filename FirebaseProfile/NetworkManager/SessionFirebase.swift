@@ -1,5 +1,5 @@
 //
-//  SessionStore.swift
+//  SessionFirebase.swift
 //  testRemovetest
 //
 //  Created by Валерий Игнатьев on 4.06.21.
@@ -8,27 +8,18 @@
 import UIKit
 import Combine
 import Firebase
-//import FirebaseStorage
-//import FirebaseFirestore
 
-class SessionStore: ObservableObject {
+class SessionFirebase: ObservableObject {
     @Published var isSignIn = false
-    @Published var userName: String = ""
-    
-    @Published var avatarURL: String = ""
-    @Published var avatarData = Data()
-    
     @Published var errorMessage: String = ""
     @Published var user: User?
     
     func listen() {
-        //firebase рекомендует получать текущего пользователя - установив прослушивателя для объекта Auth:
         _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                self.user = User(uid: user.uid, email: user.email, userName: user.displayName, avatarURL: user.photoURL)
-                self.isSignIn = false
+                self.user = User(uid: user.uid, email: user.email)
                 self.getMeUrlAndName()
-//                self?.downloadAvatar()
+                self.isSignIn = false
             } else {
                 self.user = nil
                 self.isSignIn = true
@@ -36,31 +27,17 @@ class SessionStore: ObservableObject {
         }
     }
     
-    func downloadAvatar() {
-        let avatarRef = Storage.storage().reference(forURL: avatarURL)
-        let megaByte = Int64(2 * 1024 * 1024)
-        avatarRef.getData(maxSize: megaByte) { data, error in
+    func getMeUrlAndName() {
+        let userRef = Firestore.firestore().collection("users")
+        let currentDoc = userRef.whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
+
+        currentDoc.getDocuments() { querySnapshot, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
             } else {
-//                let image = UIImage(data: data!)
-                self.avatarData = data!
-                print("Скачали")
-            }
-        }
-    }
-    
-    func getMeUrlAndName() {
-        let userRef = Firestore.firestore().collection("users")
-        let currentDoc = userRef.whereField("uid", isEqualTo: user?.uid ?? "Хьюстон у нас проблемы")
-
-        currentDoc.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
                 for document in querySnapshot!.documents {
-                    self.userName = document.data()["userName"] as! String
-                    self.avatarURL = document.data()["avatarURL"] as! String
+                    self.user?.userName = document.data()["userName"] as? String
+                    self.user?.avatarURL = document.data()["avatarURL"] as? String
                 }
             }
         }
@@ -84,32 +61,22 @@ class SessionStore: ObservableObject {
             guard let result = result else { return }
             guard let name = name else { return }
             
-            self.upload(currenrUid: result.user.uid, photo: photo) { resultUpload in
-                switch resultUpload {
+            self.upload(currenrUid: result.user.uid, photo: photo) { ResultUrlError in
+                switch ResultUrlError {
                     case .success(let url):
                         let db = Firestore.firestore()
                         db.collection("users").addDocument(data: ["userName" : name,
                                                                   "avatarURL" : url.absoluteString,
-                                                                  "uid" : result.user.uid])
-                        { error in
+                                                                  "uid" : result.user.uid]) { error in
                             if let error = error {
                                 self.errorMessage = error.localizedDescription
                             }
+                            self.getMeUrlAndName()
                         }
-
                     case .failure(let error):
                         self.errorMessage = error.localizedDescription
                 }
             }
-        }
-    }
-    
-    func sighOut() {
-        do {
-            try Auth.auth().signOut()
-            user = nil
-        } catch {
-            print(error.localizedDescription)
         }
     }
     
@@ -135,7 +102,29 @@ class SessionStore: ObservableObject {
                 }
             }
         }
-    }    
+    }
+    
+    func sighOut() {
+        do {
+            try Auth.auth().signOut()
+            user = nil
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    ///метод firebase - никакого кеширования ничего, поиграли и забыли
+//    func downloadAvatar() {
+//        let avatarRef = Storage.storage().reference(forURL: "url")
+//        let megaByte = Int64(1 * 1024 * 1024)
+//        avatarRef.getData(maxSize: megaByte) { data, error in
+//            if let error = error {
+//                self.errorMessage = error.localizedDescription
+//            } else {
+//                self.avatarData = data!
+//            }
+//        }
+//    }
 }
 
 //    func updateProfile(name: String) {

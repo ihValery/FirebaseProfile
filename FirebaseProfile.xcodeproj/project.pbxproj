@@ -11,14 +11,15 @@
 		8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DE266D35A800BF70D9 /* AuthButton.swift */; };
 		8062A8E1266D3A4F00BF70D9 /* BeautifulBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */; };
 		8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E2266D3EBA00BF70D9 /* View.swift */; };
-		8062A8E6266D484600BF70D9 /* NewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E5266D484600BF70D9 /* NewTest.swift */; };
+		8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E7266D72B300BF70D9 /* ImageLoaderAndCache.swift */; };
+		8062A8EA266D73E900BF70D9 /* ImageWithURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */; };
 		8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078C85A266A58900009D2DA /* FirebaseProfile.swift */; };
 		8078C85D266A58900009D2DA /* WelcomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078C85C266A58900009D2DA /* WelcomView.swift */; };
 		8078C85F266A58930009D2DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8078C85E266A58930009D2DA /* Assets.xcassets */; };
 		8078C862266A58930009D2DA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8078C861266A58930009D2DA /* Preview Assets.xcassets */; };
 		8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078C869266A5A290009D2DA /* AuthenticationView.swift */; };
 		807C4B9C266A6E4D00C3DEA5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4B9B266A6E4D00C3DEA5 /* User.swift */; };
-		807C4B9E266A6EF900C3DEA5 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4B9D266A6EF900C3DEA5 /* SessionStore.swift */; };
+		807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4B9D266A6EF900C3DEA5 /* SessionFirebase.swift */; };
 		807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */; };
 		807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */; };
 		807C4BA6266B8D9100C3DEA5 /* BlurViewLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */; };
@@ -33,7 +34,8 @@
 		8062A8DE266D35A800BF70D9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBackground.swift; sourceTree = "<group>"; };
 		8062A8E2266D3EBA00BF70D9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		8062A8E5266D484600BF70D9 /* NewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTest.swift; sourceTree = "<group>"; };
+		8062A8E7266D72B300BF70D9 /* ImageLoaderAndCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderAndCache.swift; sourceTree = "<group>"; };
+		8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithURL.swift; sourceTree = "<group>"; };
 		8078C857266A58900009D2DA /* FirebaseProfile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseProfile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8078C85A266A58900009D2DA /* FirebaseProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProfile.swift; sourceTree = "<group>"; };
 		8078C85C266A58900009D2DA /* WelcomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomView.swift; sourceTree = "<group>"; };
@@ -42,7 +44,7 @@
 		8078C863266A58930009D2DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8078C869266A5A290009D2DA /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		807C4B9B266A6E4D00C3DEA5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		807C4B9D266A6EF900C3DEA5 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		807C4B9D266A6EF900C3DEA5 /* SessionFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFirebase.swift; sourceTree = "<group>"; };
 		807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAvatar.swift; sourceTree = "<group>"; };
 		807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurViewLight.swift; sourceTree = "<group>"; };
@@ -86,7 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				8078C85C266A58900009D2DA /* WelcomView.swift */,
-				8062A8E5266D484600BF70D9 /* NewTest.swift */,
 				8078C869266A5A290009D2DA /* AuthenticationView.swift */,
 			);
 			path = View;
@@ -95,7 +96,8 @@
 		80514C25266BF5A600AE98DF /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				807C4B9D266A6EF900C3DEA5 /* SessionStore.swift */,
+				807C4B9D266A6EF900C3DEA5 /* SessionFirebase.swift */,
+				8062A8E7266D72B300BF70D9 /* ImageLoaderAndCache.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 		80514C26266BF5C700AE98DF /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */,
 				8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */,
 				8062A8DE266D35A800BF70D9 /* AuthButton.swift */,
 				807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */,
@@ -241,12 +244,13 @@
 				8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */,
 				8062A8E1266D3A4F00BF70D9 /* BeautifulBackground.swift in Sources */,
 				807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */,
-				807C4B9E266A6EF900C3DEA5 /* SessionStore.swift in Sources */,
+				807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */,
+				8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */,
 				807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */,
 				807C4BA6266B8D9100C3DEA5 /* BlurViewLight.swift in Sources */,
 				8078C85D266A58900009D2DA /* WelcomView.swift in Sources */,
+				8062A8EA266D73E900BF70D9 /* ImageWithURL.swift in Sources */,
 				8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */,
-				8062A8E6266D484600BF70D9 /* NewTest.swift in Sources */,
 				8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */,
 				8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */,
 				8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */,
