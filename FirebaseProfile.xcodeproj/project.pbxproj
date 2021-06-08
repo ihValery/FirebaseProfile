@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		805B3ADC266F83F000B64A1F /* BeautifulBgUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */; };
 		8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DC266D351900BF70D9 /* AuthTextField.swift */; };
 		8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DE266D35A800BF70D9 /* AuthButton.swift */; };
-		8062A8E1266D3A4F00BF70D9 /* BeautifulBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */; };
+		8062A8E1266D3A4F00BF70D9 /* BeautifulBg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E0266D3A4F00BF70D9 /* BeautifulBg.swift */; };
 		8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E2266D3EBA00BF70D9 /* View.swift */; };
 		8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E7266D72B300BF70D9 /* ImageLoaderAndCache.swift */; };
 		8062A8EA266D73E900BF70D9 /* ImageWithURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */; };
@@ -22,7 +23,7 @@
 		807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4B9D266A6EF900C3DEA5 /* SessionFirebase.swift */; };
 		807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */; };
 		807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */; };
-		807C4BA6266B8D9100C3DEA5 /* BlurViewLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */; };
+		807C4BA6266B8D9100C3DEA5 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807C4BA5266B8D9100C3DEA5 /* BlurView.swift */; };
 		8088F426266C8A81002AC153 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8088F425266C8A81002AC153 /* FirebaseAuth */; };
 		8088F428266C8A81002AC153 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8088F427266C8A81002AC153 /* FirebaseFirestore */; };
 		8088F42A266C8A81002AC153 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8088F429266C8A81002AC153 /* FirebaseStorage */; };
@@ -30,9 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBgUrl.swift; sourceTree = "<group>"; };
 		8062A8DC266D351900BF70D9 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8062A8DE266D35A800BF70D9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBackground.swift; sourceTree = "<group>"; };
+		8062A8E0266D3A4F00BF70D9 /* BeautifulBg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBg.swift; sourceTree = "<group>"; };
 		8062A8E2266D3EBA00BF70D9 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		8062A8E7266D72B300BF70D9 /* ImageLoaderAndCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderAndCache.swift; sourceTree = "<group>"; };
 		8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWithURL.swift; sourceTree = "<group>"; };
@@ -47,7 +49,7 @@
 		807C4B9D266A6EF900C3DEA5 /* SessionFirebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFirebase.swift; sourceTree = "<group>"; };
 		807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAvatar.swift; sourceTree = "<group>"; };
-		807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurViewLight.swift; sourceTree = "<group>"; };
+		807C4BA5266B8D9100C3DEA5 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		8088F42B266C8AB5002AC153 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,12 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */,
-				8062A8E0266D3A4F00BF70D9 /* BeautifulBackground.swift */,
-				8062A8DE266D35A800BF70D9 /* AuthButton.swift */,
+				805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */,
+				8062A8E0266D3A4F00BF70D9 /* BeautifulBg.swift */,
 				807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */,
+				8062A8DE266D35A800BF70D9 /* AuthButton.swift */,
 				8062A8DC266D351900BF70D9 /* AuthTextField.swift */,
 				807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */,
-				807C4BA5266B8D9100C3DEA5 /* BlurViewLight.swift */,
+				807C4BA5266B8D9100C3DEA5 /* BlurView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -242,16 +245,17 @@
 			files = (
 				807C4B9C266A6E4D00C3DEA5 /* User.swift in Sources */,
 				8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */,
-				8062A8E1266D3A4F00BF70D9 /* BeautifulBackground.swift in Sources */,
+				8062A8E1266D3A4F00BF70D9 /* BeautifulBg.swift in Sources */,
 				807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */,
 				807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */,
 				8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */,
 				807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */,
-				807C4BA6266B8D9100C3DEA5 /* BlurViewLight.swift in Sources */,
+				807C4BA6266B8D9100C3DEA5 /* BlurView.swift in Sources */,
 				8078C85D266A58900009D2DA /* WelcomView.swift in Sources */,
 				8062A8EA266D73E900BF70D9 /* ImageWithURL.swift in Sources */,
 				8062A8E3266D3EBA00BF70D9 /* View.swift in Sources */,
 				8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */,
+				805B3ADC266F83F000B64A1F /* BeautifulBgUrl.swift in Sources */,
 				8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */,
 				8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */,
 			);

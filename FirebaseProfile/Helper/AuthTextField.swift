@@ -19,9 +19,3 @@ struct AuthTextField: View {
             .font(.title)
     }
 }
-
-struct AuthTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthTextField(name: "user name", field: .constant("temp"))
-    }
-}

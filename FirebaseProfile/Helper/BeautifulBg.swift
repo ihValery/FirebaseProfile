@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BeautifulBackground: View {
+struct BeautifulBg: View {
     @Binding var image: UIImage
     
     var body: some View {
@@ -17,11 +17,5 @@ struct BeautifulBackground: View {
         }
         .overlay(BlurViewDark())
         .ignoresSafeArea()
-    }
-}
-
-struct BeautifulBackground_Previews: PreviewProvider {
-    static var previews: some View {
-        BeautifulBackground(image: .constant(UIImage()))
     }
 }

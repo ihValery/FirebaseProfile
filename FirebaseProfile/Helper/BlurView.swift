@@ -1,5 +1,5 @@
 //
-//  BlurViewLight.swift
+//  BlurView.swift
 //  testRemovetest
 //
 //  Created by Валерий Игнатьев on 5.06.21.

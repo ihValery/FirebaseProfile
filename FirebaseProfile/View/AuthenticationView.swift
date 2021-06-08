@@ -20,7 +20,7 @@ struct AuthenticationView: View {
     
     var body: some View {
         ZStack {
-            BeautifulBackground(image: $image)
+            BeautifulBg(image: $image)
             
             VStack {
                 VStack {
