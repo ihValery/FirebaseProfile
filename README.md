@@ -9,6 +9,9 @@
     не автоизированны? тогда выскочит окно ))).
 - Познакомился с ImagePicker (доступ к библиотеке фотографий).
 - Выбор фотки и последующая загрузка в профайл.
-- BlurView наконецто. (дизайн не для примера)
+- Загрузка фотографии и кеширование.
+- BlurView наконецто. (дизайн не для примера).
+- Динамический задний фон.
 
-<img src="https://github.com/ihValery/FirebaseProfile/blob/feature/firebaseProfile.png?raw=true"></a>
+<img src="https://github.com/ihValery/FirebaseProfile/blob/feature/ProfileFireBase.png?raw=true"></a>
+<img src="https://github.com/ihValery/FirebaseProfile/blob/feature/profileFB.gif?raw=true"></a>
