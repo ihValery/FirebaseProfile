@@ -21,10 +21,3 @@ struct FrameAvatar: View {
                 .overlay(Circle().stroke(Color.white, lineWidth: 1))
     }
 }
-
-struct ImagePreview_Previews: PreviewProvider {
-    static var previews: some View {
-        FrameAvatar(image: .constant(UIImage()))
-            .preferredColorScheme(.dark)
-    }
-}

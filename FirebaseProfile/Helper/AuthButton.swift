@@ -23,9 +23,3 @@ struct AuthButton: View {
         }
     }
 }
-
-struct AuthButton_Previews: PreviewProvider {
-    static var previews: some View {
-        AuthButton(lable: "Sign In") {}
-    }
-}

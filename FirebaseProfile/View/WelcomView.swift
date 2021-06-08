@@ -9,11 +9,10 @@ import SwiftUI
 
 struct WelcomView: View {
     @ObservedObject var session: SessionFirebase
-    @State private var image = UIImage()
     
     var body: some View {
         ZStack {
-            BeautifulBackground(image: $image)
+            BeautifulBgUrl(session.user?.avatarURL ?? "")
             
             VStack {
                 ImageWithURL(session.user?.avatarURL ?? "")

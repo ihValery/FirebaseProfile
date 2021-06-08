@@ -70,8 +70,9 @@ class SessionFirebase: ObservableObject {
                                                                   "uid" : result.user.uid]) { error in
                             if let error = error {
                                 self.errorMessage = error.localizedDescription
+                            } else {
+                                self.getMeUrlAndName()
                             }
-                            self.getMeUrlAndName()
                         }
                     case .failure(let error):
                         self.errorMessage = error.localizedDescription
@@ -112,46 +113,4 @@ class SessionFirebase: ObservableObject {
             print(error.localizedDescription)
         }
     }
-    
-    ///метод firebase - никакого кеширования ничего, поиграли и забыли
-//    func downloadAvatar() {
-//        let avatarRef = Storage.storage().reference(forURL: "url")
-//        let megaByte = Int64(1 * 1024 * 1024)
-//        avatarRef.getData(maxSize: megaByte) { data, error in
-//            if let error = error {
-//                self.errorMessage = error.localizedDescription
-//            } else {
-//                self.avatarData = data!
-//            }
-//        }
-//    }
 }
-
-//    func updateProfile(name: String) {
-//        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-//        changeRequest?.displayName = name
-//        changeRequest?.commitChanges { [weak self] error in
-//            if let error = error {
-//                self?.errorMessage = error.localizedDescription
-//                return
-//            } else {
-//                self?.user?.userName = name
-//                self?.userName = name
-//            }
-//        }
-//    }
-
-
-//    var handle: AuthStateDidChangeListenerHandle?
-
-//    init() {
-//        _ = Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
-//            if let user = user {
-//                self?.user = User(uid: user.uid, email: user.email, userName: user.displayName)
-//                self?.userName = user.displayName ?? "no name"
-//            } else {
-//                self?.isSignIn = true
-//                self?.user = nil
-//            }
-//        }
-//    }
