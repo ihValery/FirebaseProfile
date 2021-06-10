@@ -22,6 +22,6 @@ struct ImageWithURL: View {
             .frame(maxWidth: sideSquare, maxHeight: sideSquare)
             .clipped()
             .background(BlurViewLight())
-            .cornerRadius(25)
+            .cornerRadius(13)
     }
 }

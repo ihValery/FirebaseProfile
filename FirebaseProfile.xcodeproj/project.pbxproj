@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80180F4926724A3E00E48768 /* OneCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80180F4826724A3E00E48768 /* OneCardScore.swift */; };
+		80180F4B26726BC500E48768 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80180F4A26726BC500E48768 /* ScoreData.swift */; };
+		804CACD92671806C00CD6C09 /* BackgroundScoreTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */; };
+		804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDA26718A7E00CD6C09 /* CustomCorners.swift */; };
+		804CACDD26718D4F00CD6C09 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDC26718D4F00CD6C09 /* Color.swift */; };
+		804CACE12671981800CD6C09 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACE02671981800CD6C09 /* Header.swift */; };
+		804CACE32671ABC400CD6C09 /* RectangleReverseAngle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACE22671ABC400CD6C09 /* RectangleReverseAngle.swift */; };
+		804CACE52671CAB900CD6C09 /* BackgroundAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACE42671CAB900CD6C09 /* BackgroundAnimation.swift */; };
 		805B3ADC266F83F000B64A1F /* BeautifulBgUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */; };
 		8062A8DD266D351900BF70D9 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DC266D351900BF70D9 /* AuthTextField.swift */; };
 		8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8062A8DE266D35A800BF70D9 /* AuthButton.swift */; };
@@ -31,6 +39,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		80180F4826724A3E00E48768 /* OneCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCardScore.swift; sourceTree = "<group>"; };
+		80180F4A26726BC500E48768 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
+		804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundScoreTable.swift; sourceTree = "<group>"; };
+		804CACDA26718A7E00CD6C09 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
+		804CACDC26718D4F00CD6C09 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		804CACE02671981800CD6C09 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		804CACE22671ABC400CD6C09 /* RectangleReverseAngle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleReverseAngle.swift; sourceTree = "<group>"; };
+		804CACE42671CAB900CD6C09 /* BackgroundAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundAnimation.swift; sourceTree = "<group>"; };
 		805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautifulBgUrl.swift; sourceTree = "<group>"; };
 		8062A8DC266D351900BF70D9 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8062A8DE266D35A800BF70D9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -67,6 +83,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80180F4726723B3E00E48768 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */,
+				80180F4826724A3E00E48768 /* OneCardScore.swift */,
+				804CACE02671981800CD6C09 /* Header.swift */,
+				804CACE22671ABC400CD6C09 /* RectangleReverseAngle.swift */,
+				804CACE42671CAB900CD6C09 /* BackgroundAnimation.swift */,
+				804CACDA26718A7E00CD6C09 /* CustomCorners.swift */,
+				80180F4A26726BC500E48768 /* ScoreData.swift */,
+			);
+			path = Score;
+			sourceTree = "<group>";
+		};
 		80514C22266BF52E00AE98DF /* System32 */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				8062A8E2266D3EBA00BF70D9 /* View.swift */,
+				804CACDC26718D4F00CD6C09 /* Color.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -148,6 +179,7 @@
 			children = (
 				8078C85A266A58900009D2DA /* FirebaseProfile.swift */,
 				80514C23266BF55C00AE98DF /* Model */,
+				80180F4726723B3E00E48768 /* Score */,
 				80514C24266BF57100AE98DF /* View */,
 				80514C25266BF5A600AE98DF /* NetworkManager */,
 				80514C26266BF5C700AE98DF /* Helper */,
@@ -243,12 +275,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				804CACE12671981800CD6C09 /* Header.swift in Sources */,
+				80180F4926724A3E00E48768 /* OneCardScore.swift in Sources */,
 				807C4B9C266A6E4D00C3DEA5 /* User.swift in Sources */,
 				8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */,
 				8062A8E1266D3A4F00BF70D9 /* BeautifulBg.swift in Sources */,
 				807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */,
 				807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */,
 				8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */,
+				804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */,
+				804CACE52671CAB900CD6C09 /* BackgroundAnimation.swift in Sources */,
+				80180F4B26726BC500E48768 /* ScoreData.swift in Sources */,
 				807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */,
 				807C4BA6266B8D9100C3DEA5 /* BlurView.swift in Sources */,
 				8078C85D266A58900009D2DA /* WelcomView.swift in Sources */,
@@ -258,6 +295,9 @@
 				805B3ADC266F83F000B64A1F /* BeautifulBgUrl.swift in Sources */,
 				8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */,
 				8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */,
+				804CACD92671806C00CD6C09 /* BackgroundScoreTable.swift in Sources */,
+				804CACDD26718D4F00CD6C09 /* Color.swift in Sources */,
+				804CACE32671ABC400CD6C09 /* RectangleReverseAngle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
