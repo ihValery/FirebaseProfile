@@ -108,7 +108,6 @@ class SessionFirebase: ObservableObject {
     func sighOut() {
         do {
             try Auth.auth().signOut()
-            user = nil
         } catch {
             print(error.localizedDescription)
         }
