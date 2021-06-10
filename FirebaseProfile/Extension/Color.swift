@@ -11,4 +11,5 @@ extension Color {
     static let blueEnd = Color("blueEnd")
     static let blueStart = Color("blueStart")
     static let cardScore = Color("cardScore")
+    static let cardScoreTwo = Color("cardScoreTwo")
 }

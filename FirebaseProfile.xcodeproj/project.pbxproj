@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		80180F4926724A3E00E48768 /* OneCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80180F4826724A3E00E48768 /* OneCardScore.swift */; };
 		80180F4B26726BC500E48768 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80180F4A26726BC500E48768 /* ScoreData.swift */; };
-		804CACD92671806C00CD6C09 /* BackgroundScoreTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */; };
+		804CACD92671806C00CD6C09 /* ScoreTableViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACD82671806C00CD6C09 /* ScoreTableViewMain.swift */; };
 		804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDA26718A7E00CD6C09 /* CustomCorners.swift */; };
 		804CACDD26718D4F00CD6C09 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDC26718D4F00CD6C09 /* Color.swift */; };
 		804CACE12671981800CD6C09 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACE02671981800CD6C09 /* Header.swift */; };
@@ -36,12 +36,13 @@
 		8088F428266C8A81002AC153 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8088F427266C8A81002AC153 /* FirebaseFirestore */; };
 		8088F42A266C8A81002AC153 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8088F429266C8A81002AC153 /* FirebaseStorage */; };
 		8088F42C266C8AB5002AC153 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8088F42B266C8AB5002AC153 /* GoogleService-Info.plist */; };
+		80F064B626728F83009D7F21 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F064B526728F83009D7F21 /* Animation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		80180F4826724A3E00E48768 /* OneCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCardScore.swift; sourceTree = "<group>"; };
 		80180F4A26726BC500E48768 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
-		804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundScoreTable.swift; sourceTree = "<group>"; };
+		804CACD82671806C00CD6C09 /* ScoreTableViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewMain.swift; sourceTree = "<group>"; };
 		804CACDA26718A7E00CD6C09 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		804CACDC26718D4F00CD6C09 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		804CACE02671981800CD6C09 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAvatar.swift; sourceTree = "<group>"; };
 		807C4BA5266B8D9100C3DEA5 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		8088F42B266C8AB5002AC153 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		80F064B526728F83009D7F21 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,7 @@
 		80180F4726723B3E00E48768 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				804CACD82671806C00CD6C09 /* BackgroundScoreTable.swift */,
+				804CACD82671806C00CD6C09 /* ScoreTableViewMain.swift */,
 				80180F4826724A3E00E48768 /* OneCardScore.swift */,
 				804CACE02671981800CD6C09 /* Header.swift */,
 				804CACE22671ABC400CD6C09 /* RectangleReverseAngle.swift */,
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				8062A8E2266D3EBA00BF70D9 /* View.swift */,
+				80F064B526728F83009D7F21 /* Animation.swift */,
 				804CACDC26718D4F00CD6C09 /* Color.swift */,
 			);
 			path = Extension;
@@ -285,6 +288,7 @@
 				8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */,
 				804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */,
 				804CACE52671CAB900CD6C09 /* BackgroundAnimation.swift in Sources */,
+				80F064B626728F83009D7F21 /* Animation.swift in Sources */,
 				80180F4B26726BC500E48768 /* ScoreData.swift in Sources */,
 				807C4BA2266AD9C800C3DEA5 /* ImagePicker.swift in Sources */,
 				807C4BA6266B8D9100C3DEA5 /* BlurView.swift in Sources */,
@@ -295,7 +299,7 @@
 				805B3ADC266F83F000B64A1F /* BeautifulBgUrl.swift in Sources */,
 				8078C85B266A58900009D2DA /* FirebaseProfile.swift in Sources */,
 				8078C86A266A5A290009D2DA /* AuthenticationView.swift in Sources */,
-				804CACD92671806C00CD6C09 /* BackgroundScoreTable.swift in Sources */,
+				804CACD92671806C00CD6C09 /* ScoreTableViewMain.swift in Sources */,
 				804CACDD26718D4F00CD6C09 /* Color.swift in Sources */,
 				804CACE32671ABC400CD6C09 /* RectangleReverseAngle.swift in Sources */,
 			);
