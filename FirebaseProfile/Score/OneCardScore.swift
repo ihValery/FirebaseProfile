@@ -42,6 +42,7 @@ struct OneCardScore: View {
         }
         .padding(.horizontal, 40)
         .background(BgCardScore())
+        .padding(.vertical, 35).padding(.leading, 10)
     }
     
     private func dateToString(_ date: Date) -> String {
@@ -61,7 +62,7 @@ struct ScrollViewScoreTable_Previews: PreviewProvider {
 struct BgCardScore: View {
     var body: some View {
         VStack {
-            Rectangle().fill(Color.cardScore)
+            Rectangle().fill(Color.cardScoreTwo).opacity(0.3)
                 .cornerRadius(6)
                 .clipShape(CustomCorners(corner: [.topLeft, .bottomRight], radius: 60))
                 .frame(height: 120)
