@@ -34,7 +34,7 @@ struct ScoreTableViewMain: View {
                     ScrollView {
                         LazyVStack {
                             ForEach(viewModel.scoreData, id: \.self) { item in
-                                OneCardScore(name: item.theme, result: item.maxScore)
+                                OneCardScore(name: item.theme, result: item.maxScore, date: item.date)
 //                                    OneCardScore(name: item.theme, result: item.score, date: item.date)
 //                                        .offset(y: isAnimation ? 0 : getRect().height)
 //                                        .animation(.ripple(index: item.id).delay(1))
