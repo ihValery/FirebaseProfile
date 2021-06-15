@@ -25,15 +25,13 @@ struct User {
 struct Score: Hashable {
     var theme: String
     var maxScore: Int
-    //    var date: Date
+    var date = Date()
 }
 
 class ViewModel: ObservableObject {
-    @Published var scoreData: [Score] = [Score(theme: "🐘", maxScore: 13),
-                                         Score(theme: "🏓", maxScore: 14)]
+    @Published var scoreData: [Score] = [Score(theme: "🐘", maxScore: 13, date: Date(timeIntervalSince1970: 1623323920))]
     
     func add(theme: String, number: Int) {
-        
         guard let indexItem = searchIndex(theme: theme) else {
             scoreData.append(Score(theme: theme, maxScore: number))
             return
@@ -41,16 +39,8 @@ class ViewModel: ObservableObject {
         
         if number > scoreData[indexItem].maxScore{
             scoreData[indexItem].maxScore = number
+            scoreData[indexItem].date = Date()
         }
-//
-//        guard let currentScore = scoreData.first?.maxScore else {
-//            scoreData.append(Score(theme: theme, maxScore: number))
-//            return
-//        }
-//
-//        if number > currentScore {
-//            scoreData[0] = Score(theme: theme, maxScore: number)
-//        }
     }
     
     private func searchIndex(theme: String) -> Int? {

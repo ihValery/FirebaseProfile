@@ -10,36 +10,35 @@ import SwiftUI
 struct OneCardScore: View {
     var name: String
     var result: Int
-//    var date: Date
+    var date: Date
     
     var body: some View {
-        ZStack {
-            HStack {
-                Text(name)
-                    .font(.system(size: 60))
-                    .offset(y: 7)
-                Spacer()
-            }
-            
-            HStack {
-                Spacer()
+        HStack {
+            ZStack {
                 HStack {
+                    Text(name)
+                        .font(.system(size: 60))
+                    
                     VStack(alignment: .leading) {
                         Text("Результат  ")
                             .font(.title)
-//                        Text(dateToString(date))
-//                            .font(.subheadline).opacity(0.6)
+                        Text(dateToString(date))
+                            .font(.subheadline).opacity(0.6)
                     }
                     .opacity(0.6)
-                    
+                    Spacer()
+                }
+                
+                HStack {
+                    Spacer()
                     Text(String(result))
                         .font(.system(size: 50).bold())
                         .opacity(0.7)
-                        .offset(y: -5)
                 }
-                .foregroundColor(.black)
+                .zIndex(1)
             }
         }
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 40)
         .background(BgCardScore())
         .padding(.vertical, 35).padding(.leading, 10)
@@ -55,7 +54,7 @@ struct OneCardScore: View {
 
 struct ScrollViewScoreTable_Previews: PreviewProvider {
     static var previews: some View {
-        OneCardScore(name: "🧑🏽‍🚒", result: 35)
+        OneCardScore(name: "🧑🏽‍🚒", result: 35, date: Date(timeIntervalSince1970: 1623323920))
     }
 }
 
