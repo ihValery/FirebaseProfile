@@ -16,7 +16,7 @@ struct FirebaseProfile: App {
     
     var body: some Scene {
         WindowGroup {
-            ScoreTableViewMain()
+            ScoreTableViewMain(session: SessionFirebase(), viewModel: ViewModel())
 //            WelcomView(session: SessionFirebase())
         }
     }

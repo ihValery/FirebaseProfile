@@ -13,7 +13,7 @@ struct CustomCorners: Shape {
     
     func path(in rect: CGRect) -> Path {
         let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: radius))
-        
+       
         return Path(path.cgPath)
     }
 }

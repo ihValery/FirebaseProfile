@@ -27,6 +27,19 @@ class SessionFirebase: ObservableObject {
         }
     }
     
+    func addNewElement(number: Int) {
+//        guard let currentScore = user?.score?.maxScore else {
+//            scoreData.append(Score(theme: "current", maxScore: number))
+////            user?.score?.maxScore = number
+//            return
+//        }
+//        
+//        if number > currentScore {
+//            scoreData.append(Score(theme: "max", maxScore: number))
+////            user?.score?.maxScore = number
+//        }
+    }
+    
     func getMeUrlAndName() {
         let userRef = Firestore.firestore().collection("users")
         let currentDoc = userRef.whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")

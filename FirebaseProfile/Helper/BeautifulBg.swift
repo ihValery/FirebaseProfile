@@ -9,10 +9,10 @@ import SwiftUI
 
 struct BeautifulBg: View {
     @Binding var image: UIImage
-    
+
     var body: some View {
         ZStack {
-            Image("bgFon3").resizable()
+            Image("day").resizable()
             Image(uiImage: image).resizable()
         }
         .overlay(BlurViewDark())

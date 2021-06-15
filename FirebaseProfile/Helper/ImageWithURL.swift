@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ImageWithURL: View {
-    var sideSquare: CGFloat { getRect().width - 40 }
     @ObservedObject var imageLoader: ImageLoaderAndCache
     
     init(_ url: String) {
@@ -19,9 +18,9 @@ struct ImageWithURL: View {
         Image(uiImage: UIImage(data: imageLoader.imageData) ?? UIImage())
             .resizable()
             .aspectRatio(contentMode: .fill)
-            .frame(maxWidth: sideSquare, maxHeight: sideSquare)
-            .clipped()
+            .frame(width: 120, height: 120)
             .background(BlurViewLight())
-            .cornerRadius(13)
+            .clipped()
+            .cornerRadius(25)
     }
 }

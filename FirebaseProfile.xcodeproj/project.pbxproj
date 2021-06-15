@@ -141,12 +141,12 @@
 			children = (
 				8062A8E9266D73E900BF70D9 /* ImageWithURL.swift */,
 				805B3ADB266F83F000B64A1F /* BeautifulBgUrl.swift */,
-				8062A8E0266D3A4F00BF70D9 /* BeautifulBg.swift */,
 				807C4BA3266ADC6500C3DEA5 /* FrameAvatar.swift */,
 				8062A8DE266D35A800BF70D9 /* AuthButton.swift */,
 				8062A8DC266D351900BF70D9 /* AuthTextField.swift */,
 				807C4BA1266AD9C800C3DEA5 /* ImagePicker.swift */,
 				807C4BA5266B8D9100C3DEA5 /* BlurView.swift */,
+				8062A8E0266D3A4F00BF70D9 /* BeautifulBg.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";

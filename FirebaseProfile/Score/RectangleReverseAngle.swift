@@ -24,7 +24,10 @@ struct RectangleReverseAngle: Shape {
         path.addLine(to: CGPoint(x: 10, y: rect.height))
 //        path.addQuadCurve(to: CGPoint(x: 80, y: rect.height - 10),
 //                          control: CGPoint(x: 10, y: rect.height - 10))
+        path.addLine(to: CGPoint(x: 0, y: rect.height))
+//        path.addLine(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+
         path.closeSubpath()
 
         return path

@@ -16,7 +16,6 @@ struct BeautifulBgUrl: View {
     
     var body: some View {
         ZStack {
-            Image("bgFon3").resizable()
             Image(uiImage: UIImage(data: imageLoader.imageData) ?? UIImage())
                 .resizable()
         }

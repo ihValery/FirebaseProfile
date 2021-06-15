@@ -9,13 +9,14 @@ import SwiftUI
 
 struct Header: View {
     @Binding var isAnimation: Bool
+    @ObservedObject var session: SessionFirebase
     
     var body: some View {
         ZStack {
             HStack {
                 VStack {
                     Spacer()
-                    Text("Анастасия")
+                    Text(session.user?.userName ?? "Нет пользователя")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
@@ -33,7 +34,7 @@ struct Header: View {
             ZStack {
                 HStack {
                     Spacer()
-                    ImageWithURL("https://carss.cc/wp-content/uploads/2020/07/3551-5.jpg")
+                    ImageWithURL(session.user?.avatarURL ?? "")
                         .clipShape(CustomCorners(corner: .bottomRight, radius: 35))
                         .frame(width: 120, height: 120)
                         .padding().padding(.trailing)
@@ -47,7 +48,7 @@ struct Header: View {
 
 struct Header_Previews: PreviewProvider {
     static var previews: some View {
-        Header(isAnimation: .constant(true))
+        Header(isAnimation: .constant(true), session: SessionFirebase())
             .preferredColorScheme(.dark)
     }
 }
