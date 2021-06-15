@@ -9,8 +9,8 @@ import SwiftUI
 
 struct OneCardScore: View {
     var name: String
-    var result: String
-    var date: Date
+    var result: Int
+//    var date: Date
     
     var body: some View {
         ZStack {
@@ -27,12 +27,12 @@ struct OneCardScore: View {
                     VStack(alignment: .leading) {
                         Text("Результат  ")
                             .font(.title)
-                        Text(dateToString(date))
-                            .font(.subheadline).opacity(0.6)
+//                        Text(dateToString(date))
+//                            .font(.subheadline).opacity(0.6)
                     }
                     .opacity(0.6)
                     
-                    Text(result)
+                    Text(String(result))
                         .font(.system(size: 50).bold())
                         .opacity(0.7)
                         .offset(y: -5)
@@ -55,7 +55,7 @@ struct OneCardScore: View {
 
 struct ScrollViewScoreTable_Previews: PreviewProvider {
     static var previews: some View {
-        OneCardScore(name: "🧑🏽‍🚒", result: "35", date: Date())
+        OneCardScore(name: "🧑🏽‍🚒", result: 35)
     }
 }
 
