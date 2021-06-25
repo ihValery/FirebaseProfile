@@ -6,26 +6,27 @@
 //
 
 import Foundation
+import Firebase
+
 
 struct User {
-    var uid: String
-    var email: String?
+    let uid: String
+    let email: String?
     var userName: String?
     var avatarURL: String?
-    var score: Score?
     
-    //    init(uid: String, email: String?, userName: String? = nil, avatarURL: String? = nil) {
-    //        self.uid = uid
-    //        self.email = email
-    //        self.userName = userName
-    //        self.avatarURL = avatarURL
-    //    }
+    init(user: Firebase.User) {
+        self.uid = user.uid
+        self.email = user.email
+    }
 }
 
-struct Score: Hashable {
+struct Score: Identifiable, Codable {
+    var id: String?
     var theme: String
     var maxScore: Int
     var date = Date()
+    var userId: String?
 }
 
 class ViewModel: ObservableObject {

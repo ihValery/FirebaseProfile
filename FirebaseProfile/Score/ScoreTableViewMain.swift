@@ -13,6 +13,7 @@ struct ScoreTableViewMain: View {
     @State private var pickerSelect = ""
     @ObservedObject var session: SessionFirebase
     @ObservedObject var viewModel: ViewModel
+    @ObservedObject var cardListViewModel: CardListViewModel
     
     var body: some View {
         ZStack {
@@ -33,11 +34,8 @@ struct ScoreTableViewMain: View {
 
                     ScrollView {
                         LazyVStack {
-                            ForEach(viewModel.scoreData, id: \.self) { item in
+                            ForEach(viewModel.scoreData) { item in
                                 OneCardScore(name: item.theme, result: item.maxScore, date: item.date)
-//                                    OneCardScore(name: item.theme, result: item.score, date: item.date)
-//                                        .offset(y: isAnimation ? 0 : getRect().height)
-//                                        .animation(.ripple(index: item.id).delay(1))
                             }
                         }
                     }
@@ -61,7 +59,12 @@ struct ScoreTableViewMain: View {
                 .background(RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color.blue, lineWidth: pickerSelect == "" ? 1 : 0))
                 
-                AuthTextField(name: "Введи число", field: $newValue)
+                HStack {
+                    AuthTextField(name: "Введи число", field: $newValue)
+                    AuthButton(lable: "Upload") {
+                        session.addNewElement(newScore: viewModel.scoreData.last!)
+                    }
+                }
                 HStack {
                     AuthButton(lable: "Add") {
                         guard let number = Int(newValue) else { return }
@@ -77,7 +80,6 @@ struct ScoreTableViewMain: View {
         
         .onAppear {
             session.listen()
-//            isAnimation.toggle()
         }
         
         .fullScreenCover(isPresented: $session.isSignIn) {
@@ -88,6 +90,6 @@ struct ScoreTableViewMain: View {
 
 struct ScoreTable_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreTableViewMain(session: SessionFirebase(), viewModel: ViewModel())
+        ScoreTableViewMain(session: SessionFirebase(), viewModel: ViewModel(), cardListViewModel: CardListViewModel())
     }
 }
