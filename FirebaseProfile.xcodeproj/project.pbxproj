@@ -15,6 +15,7 @@
 		80180F4926724A3E00E48768 /* OneCardScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80180F4826724A3E00E48768 /* OneCardScore.swift */; };
 		8024DF7E2685C1D400020691 /* CardRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8024DF7D2685C1D400020691 /* CardRepository.swift */; };
 		8024DF812685C53A00020691 /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8024DF802685C53A00020691 /* CardListViewModel.swift */; };
+		8024DF83268633F300020691 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8024DF82268633F300020691 /* CardViewModel.swift */; };
 		804CACD92671806C00CD6C09 /* ScoreTableViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACD82671806C00CD6C09 /* ScoreTableViewMain.swift */; };
 		804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDA26718A7E00CD6C09 /* CustomCorners.swift */; };
 		804CACDD26718D4F00CD6C09 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804CACDC26718D4F00CD6C09 /* Color.swift */; };
@@ -46,6 +47,7 @@
 		80180F4826724A3E00E48768 /* OneCardScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneCardScore.swift; sourceTree = "<group>"; };
 		8024DF7D2685C1D400020691 /* CardRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRepository.swift; sourceTree = "<group>"; };
 		8024DF802685C53A00020691 /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
+		8024DF82268633F300020691 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		804CACD82671806C00CD6C09 /* ScoreTableViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewMain.swift; sourceTree = "<group>"; };
 		804CACDA26718A7E00CD6C09 /* CustomCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCorners.swift; sourceTree = "<group>"; };
 		804CACDC26718D4F00CD6C09 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8024DF802685C53A00020691 /* CardListViewModel.swift */,
+				8024DF82268633F300020691 /* CardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				8062A8DF266D35A800BF70D9 /* AuthButton.swift in Sources */,
 				8062A8E1266D3A4F00BF70D9 /* BeautifulBg.swift in Sources */,
 				807C4BA4266ADC6500C3DEA5 /* FrameAvatar.swift in Sources */,
+				8024DF83268633F300020691 /* CardViewModel.swift in Sources */,
 				807C4B9E266A6EF900C3DEA5 /* SessionFirebase.swift in Sources */,
 				8062A8E8266D72B300BF70D9 /* ImageLoaderAndCache.swift in Sources */,
 				804CACDB26718A7E00CD6C09 /* CustomCorners.swift in Sources */,
