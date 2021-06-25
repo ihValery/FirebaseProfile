@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import Firebase
+import FirebaseFirestore
 
 class SessionFirebase: ObservableObject {
     @Published var isSignIn = false

@@ -62,7 +62,7 @@ struct ScoreTableViewMain: View {
                 HStack {
                     AuthTextField(name: "Введи число", field: $newValue)
                     AuthButton(lable: "Upload") {
-                        session.addNewElement(newScore: viewModel.scoreData.last!)
+                        addCard()
                     }
                 }
                 HStack {
@@ -85,6 +85,12 @@ struct ScoreTableViewMain: View {
         .fullScreenCover(isPresented: $session.isSignIn) {
             AuthenticationView(session: session)
         }
+    }
+    
+    private func addCard() {
+        guard let number = Int(newValue) else { return }
+        let card = Score(theme: pickerSelect, maxScore: number)
+        cardListViewModel.add(card)
     }
 }
 
