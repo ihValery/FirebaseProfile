@@ -12,8 +12,8 @@ struct ScoreTableViewMain: View {
     @State private var newValue = ""
     @State private var pickerSelect = ""
     @ObservedObject var session: SessionFirebase
-    @ObservedObject var viewModel: ViewModel
-    @ObservedObject var cardListViewModel: CardListViewModel
+    var cardViewModel: CardViewModel
+    @ObservedObject var cardListViewModel = CardListViewModel()
     
     var body: some View {
         ZStack {
@@ -34,7 +34,7 @@ struct ScoreTableViewMain: View {
 
                     ScrollView {
                         LazyVStack {
-                            ForEach(viewModel.scoreData) { item in
+                            ForEach(cardListViewModel.) { item in
                                 OneCardScore(name: item.theme, result: item.maxScore, date: item.date)
                             }
                         }
@@ -96,6 +96,6 @@ struct ScoreTableViewMain: View {
 
 struct ScoreTable_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreTableViewMain(session: SessionFirebase(), viewModel: ViewModel(), cardListViewModel: CardListViewModel())
+        ScoreTableViewMain(session: SessionFirebase())
     }
 }
