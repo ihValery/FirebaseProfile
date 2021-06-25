@@ -4,7 +4,7 @@
 ////
 ////  Created by Валерий Игнатьев on 4.06.21.
 ////
-//
+
 //import SwiftUI
 //
 //struct WelcomView: View {

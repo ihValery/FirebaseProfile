@@ -17,7 +17,8 @@ class SessionFirebase: ObservableObject {
     func listen() {
         _ = Auth.auth().addStateDidChangeListener { auth, user in
             if let user = user {
-                self.user = User(uid: user.uid, email: user.email)
+                self.user = User(user: user)
+//                self.user = User(uid: user.uid, email: user.email)
                 self.getMeUrlAndName()
                 self.isSignIn = false
             } else {
@@ -27,17 +28,18 @@ class SessionFirebase: ObservableObject {
         }
     }
     
-    func addNewElement(number: Int) {
-//        guard let currentScore = user?.score?.maxScore else {
-//            scoreData.append(Score(theme: "current", maxScore: number))
-////            user?.score?.maxScore = number
-//            return
-//        }
-//        
-//        if number > currentScore {
-//            scoreData.append(Score(theme: "max", maxScore: number))
-////            user?.score?.maxScore = number
-//        }
+    func addNewElement(newScore: Score) {
+//        guard let userID = user?.uid else { return }
+        
+        let userRef = Firestore.firestore().collection("users").document("resaltScore").collection("score")
+
+        userRef.addDocument(data: ["theme" : newScore.theme,
+                                                       "maxScore" : newScore.maxScore,
+                                                       "date" : newScore.date]) { error in
+            if error != nil {
+                fatalError("SessionFirebase - строка 40 - Хьюстон у нас проблемы!")
+            }
+        }
     }
     
     func getMeUrlAndName() {
