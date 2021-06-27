@@ -13,31 +13,28 @@ struct OneCardScore: View {
     @State private var showAlert = false
     
     var body: some View {
-//        HStack {
-            ZStack {
-                HStack {
-                    Text(scoreViewModel.score.theme)
-                        .font(.system(size: 60))
-                    
-                    VStack(alignment: .leading) {
-                        Text("Результат  ")
-                            .font(.title)
-                        Text(scoreViewModel.dateToString())
-                            .font(.subheadline).opacity(0.6)
-                    }
-                    .opacity(0.6)
-                    Spacer()
-                }
+        ZStack {
+            HStack {
+                Text(scoreViewModel.score.theme)
+                    .font(.system(size: 60))
                 
-                HStack {
-                    Spacer()
-                    Text(String(scoreViewModel.score.maxScore))
-                        .font(.system(size: 50).bold())
-                        .opacity(0.7)
+                VStack(alignment: .leading) {
+                    Text("Результат  ")
+                        .font(.title)
+                    Text(scoreViewModel.dateToString())
+                        .font(.subheadline).opacity(0.6)
                 }
-//                .zIndex(1)
+                .opacity(0.6)
+                Spacer()
             }
-//        }
+            
+            HStack {
+                Spacer()
+                Text(String(scoreViewModel.score.maxScore))
+                    .font(.system(size: 50).bold())
+                    .opacity(0.7)
+            }
+        }
         .frame(maxWidth: .infinity)
         .padding(.horizontal, 40)
         .background(BgCardScore())

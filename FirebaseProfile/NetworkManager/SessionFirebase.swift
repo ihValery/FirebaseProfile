@@ -14,39 +14,26 @@ class SessionFirebase: ObservableObject {
     @Published var isSignIn = false
     @Published var errorMessage: String = ""
     @Published var user: User?
+    private let store = Firestore.firestore().collection("users")
     
-    func listen() {
-        _ = Auth.auth().addStateDidChangeListener { auth, user in
+    //    func listen() {
+    init() {
+        _ = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             if let user = user {
-                self.user = User(user: user)
-//                self.user = User(uid: user.uid, email: user.email)
-                self.getMeUrlAndName()
-                self.isSignIn = false
+                self?.user = User(user: user)
+                self?.getMeUrlAndName()
+                self?.isSignIn = false
             } else {
-                self.user = nil
-                self.isSignIn = true
-            }
-        }
-    }
-    
-    func addNewElement(newScore: Score) {
-//        guard let userID = user?.uid else { return }
-        
-        let userRef = Firestore.firestore().collection("users").document("resaltScore").collection("score")
-
-        userRef.addDocument(data: ["theme" : newScore.theme,
-                                                       "maxScore" : newScore.maxScore,
-                                                       "date" : newScore.date]) { error in
-            if error != nil {
-                fatalError("SessionFirebase - строка 40 - Хьюстон у нас проблемы!")
+                self?.user = nil
+                self?.isSignIn = true
             }
         }
     }
     
     func getMeUrlAndName() {
-        let userRef = Firestore.firestore().collection("users")
-        let currentDoc = userRef.whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
-
+        let currentDoc = store//.document(user?.uid ?? "new user").collection("userInfo")
+            .whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
+        
         currentDoc.getDocuments() { querySnapshot, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
@@ -77,21 +64,25 @@ class SessionFirebase: ObservableObject {
             guard let result = result else { return }
             guard let name = name else { return }
             
-            self.upload(currenrUid: result.user.uid, photo: photo) { ResultUrlError in
+            self.upload(currenrUid: result.user.uid, photo: photo) { [weak self] ResultUrlError in
                 switch ResultUrlError {
                     case .success(let url):
-                        let db = Firestore.firestore()
-                        db.collection("users").addDocument(data: ["userName" : name,
-                                                                  "avatarURL" : url.absoluteString,
-                                                                  "uid" : result.user.uid]) { error in
-                            if let error = error {
-                                self.errorMessage = error.localizedDescription
-                            } else {
-                                self.getMeUrlAndName()
+                        self?.store.document(result.user.uid)//.collection("userInfo")
+                            .setData(["userName" : name,
+                                      "avatarURL" : url.absoluteString,
+                                      "uid" : result.user.uid]) { error in
+                            
+//                            .addDocument(data: ["userName" : name,
+//                                                "avatarURL" : url.absoluteString,
+//                                                "uid" : result.user.uid]) { error in
+                                if let error = error {
+                                    self?.errorMessage = error.localizedDescription
+                                } else {
+                                    self?.getMeUrlAndName()
+                                }
                             }
-                        }
                     case .failure(let error):
-                        self.errorMessage = error.localizedDescription
+                        self?.errorMessage = error.localizedDescription
                 }
             }
         }
