@@ -62,10 +62,6 @@ struct ScoreTableViewMain: View {
             }
         }
         
-        .onAppear {
-            session.listen()
-        }
-        
         .sheet(isPresented: $showForm) {
             NewScoreForm(scoreListViewModel: ScoreListViewModel())
         }

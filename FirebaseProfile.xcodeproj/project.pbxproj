@@ -168,8 +168,8 @@
 		80514C24266BF57100AE98DF /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8078C85C266A58900009D2DA /* WelcomView.swift */,
 				8078C869266A5A290009D2DA /* AuthenticationView.swift */,
+				8078C85C266A58900009D2DA /* WelcomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

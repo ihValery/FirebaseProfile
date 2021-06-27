@@ -24,7 +24,7 @@ struct Header: View {
                         .padding(.leading).padding()
                 }
                 .offset(y: isAnimation ? 0 : getRect().height)
-                .animation(.spring(dampingFraction: 0.7).delay(1))
+//                .animation(.spring(dampingFraction: 0.7).delay(1))
 
                 Spacer()
             }
@@ -39,7 +39,7 @@ struct Header: View {
                         .frame(width: 120, height: 120)
                         .padding().padding(.trailing)
                         .offset(x: isAnimation ? 0 : -getRect().height)
-                        .animation(.spring(dampingFraction: 0.8).delay(0.7))
+//                        .animation(.spring(dampingFraction: 0.8).delay(0.7))
                 }
             }
         }
