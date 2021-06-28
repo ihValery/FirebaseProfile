@@ -12,7 +12,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class ScoreRepository: ObservableObject {
-//    private var store = Firestore.firestore().collection("users")
     private var userId = "noUser"
     private var sessionFirebase = SessionFirebase()
     private var cancellabel: Set<AnyCancellable> = []
@@ -40,7 +39,6 @@ class ScoreRepository: ObservableObject {
     
     private func get() {
         createStore(userId: userId)
-//        store.document(userId).collection("score")
 //            .whereField("userId", isEqualTo: userId)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
