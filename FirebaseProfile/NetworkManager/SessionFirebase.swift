@@ -54,14 +54,13 @@ class SessionFirebase: ObservableObject {
         }
     }
     
-    func signUp(email: String, password: String, name: String?, photo: UIImage) {
+    func signUp(email: String, password: String, name: String, photo: UIImage) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
                 self.errorMessage = error.localizedDescription
                 return
             }
             guard let result = result else { return }
-            guard let name = name else { return }
             
             self.upload(currenrUid: result.user.uid, photo: photo) { [weak self] ResultUrlError in
                 switch ResultUrlError {
