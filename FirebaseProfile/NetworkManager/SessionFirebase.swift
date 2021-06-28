@@ -62,8 +62,8 @@ class SessionFirebase: ObservableObject {
             }
             guard let result = result else { return }
             
-            self.upload(currenrUid: result.user.uid, photo: photo) { [weak self] ResultUrlError in
-                switch ResultUrlError {
+            self.upload(currenrUid: result.user.uid, photo: photo) { [weak self] resultUrlError in
+                switch resultUrlError {
                     case .success(let url):
                         self?.store.document(result.user.uid)
                             .setData(["userName" : name,
