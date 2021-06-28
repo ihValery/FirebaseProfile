@@ -25,6 +25,8 @@ struct ScoreTableViewMain: View {
                         .padding(.top, 30)
                     Spacer()
                 }
+                
+                //Для теста
                 .onLongPressGesture {
                     session.sighOut()
                 }
@@ -62,10 +64,12 @@ struct ScoreTableViewMain: View {
             }
         }
         
+        //Для теста
         .sheet(isPresented: $showForm) {
             NewScoreForm(scoreListViewModel: ScoreListViewModel())
         }
         
+        //Для теста
         .fullScreenCover(isPresented: $session.isSignIn) {
             AuthenticationView(session: session)
         }

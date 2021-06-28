@@ -12,14 +12,12 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class ScoreRepository: ObservableObject {
-    private let path: String = "score"
-    private let store = Firestore.firestore()
-    
-    @Published var scores: [Score] = []
-    
-    var userId = "noUser"
+    lazy var store = Firestore.firestore().collection("users").document(userId).collection("score")
+    private var userId = "noUser"
     private var sessionFirebase = SessionFirebase()
     private var cancellabel: Set<AnyCancellable> = []
+    
+    @Published var scores: [Score] = []
     
     init() {
         //Привязать userid от sessionFirebase к репозиторию userId.
@@ -41,9 +39,7 @@ class ScoreRepository: ObservableObject {
     }
     
     private func get() {
-        store.collection("users").document(userId).collection(path)
-            //Позволяет фильтровать карточки по userId.
-            .whereField("userId", isEqualTo: userId)
+        store.whereField("userId", isEqualTo: userId)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
                     print("Ошибка при получении карточек: \(error.localizedDescription)")
@@ -62,8 +58,7 @@ class ScoreRepository: ObservableObject {
             var newScore = score
             //Создавая новую карточку, она будет содержать фактический идентификатор пользователя, сгенерированный Firebase.
             newScore.userId = userId
-            _ = try store.collection("users").document(userId).collection(path)
-                .addDocument(from: newScore)
+            _ = try store.addDocument(from: newScore)
         } catch {
             fatalError("Невозможно добавить карту: \(error.localizedDescription)")
         }
@@ -73,7 +68,7 @@ class ScoreRepository: ObservableObject {
         guard let scoreId = score.id else { return }
         
         do {
-            try store.collection("users").document(userId).collection(path).document(scoreId).setData(from: score)
+            try store.document(scoreId).setData(from: score)
         } catch {
             fatalError("Невозможно обновить карту: \(error.localizedDescription)")
         }
@@ -82,7 +77,7 @@ class ScoreRepository: ObservableObject {
     func remove(_ score: Score) {
         guard let scoreId = score.id else { return }
         
-        store.collection("users").document(userId).collection(path).document(scoreId).delete() { error in
+        store.document(scoreId).delete() { error in
             if let error = error {
                 fatalError("Невозможно удалить карту: \(error.localizedDescription)")
             }

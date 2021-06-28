@@ -16,12 +16,11 @@ class SessionFirebase: ObservableObject {
     @Published var user: User?
     private let store = Firestore.firestore().collection("users")
     
-    //    func listen() {
     init() {
         _ = Auth.auth().addStateDidChangeListener { [weak self] auth, user in
             if let user = user {
                 self?.user = User(user: user)
-                self?.getMeUrlAndName()
+                self?.getUrlAndName()
                 self?.isSignIn = false
             } else {
                 self?.user = nil
@@ -30,9 +29,8 @@ class SessionFirebase: ObservableObject {
         }
     }
     
-    func getMeUrlAndName() {
-        let currentDoc = store//.document(user?.uid ?? "new user").collection("userInfo")
-            .whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
+    func getUrlAndName() {
+        let currentDoc = store.whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
         
         currentDoc.getDocuments() { querySnapshot, error in
             if let error = error {
@@ -67,18 +65,14 @@ class SessionFirebase: ObservableObject {
             self.upload(currenrUid: result.user.uid, photo: photo) { [weak self] ResultUrlError in
                 switch ResultUrlError {
                     case .success(let url):
-                        self?.store.document(result.user.uid)//.collection("userInfo")
+                        self?.store.document(result.user.uid)
                             .setData(["userName" : name,
                                       "avatarURL" : url.absoluteString,
                                       "uid" : result.user.uid]) { error in
-                            
-//                            .addDocument(data: ["userName" : name,
-//                                                "avatarURL" : url.absoluteString,
-//                                                "uid" : result.user.uid]) { error in
                                 if let error = error {
                                     self?.errorMessage = error.localizedDescription
                                 } else {
-                                    self?.getMeUrlAndName()
+                                    self?.getUrlAndName()
                                 }
                             }
                     case .failure(let error):
