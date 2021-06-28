@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ScoreViewModel: ObservableObject, Identifiable {
-    private let scoreRepository = ScoreRepository()
+    private let repository = ScoreRepository()
     @Published var score: Score
     //cancellables используется для хранения ваших подписок, чтобы вы могли отменить их позже.
     private var cancellabel: Set<AnyCancellable> = []
@@ -27,7 +27,7 @@ class ScoreViewModel: ObservableObject, Identifiable {
     }
     
     func remove() {
-        scoreRepository.remove(score)
+        repository.remove(score)
     }
     
     func dateToString() -> String {

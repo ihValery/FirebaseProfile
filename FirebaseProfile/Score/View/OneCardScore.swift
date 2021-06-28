@@ -53,7 +53,7 @@ struct OneCardScore: View {
                 })
         
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Удалить счет"), message: Text("Это действие нельзу будет отменить"),
+            Alert(title: Text("Удалить счет"), message: Text("Это действие нельзя будет отменить"),
                   primaryButton: .destructive(Text("Удалить")) { scoreViewModel.remove() },
                   secondaryButton: .cancel(Text("Нет")))
         }

@@ -9,12 +9,12 @@ import Foundation
 import Combine
 
 class ScoreListViewModel: ObservableObject {
-    @Published private var scoreRepository = ScoreRepository()
+    @Published private var repository = ScoreRepository()
     @Published var scoreViewModels: [ScoreViewModel] = []
     private var cancellabel: Set<AnyCancellable> = []
     
     init() {
-        scoreRepository.$scores.map { scores in
+        repository.$scores.map { scores in
             scores.map(ScoreViewModel.init)
         }
         .assign(to: \.scoreViewModels, on: self)
@@ -25,18 +25,18 @@ class ScoreListViewModel: ObservableObject {
         guard let number = Int(number) else { return }
         
         guard let currentIndex = searchIndex(theme: theme) else {
-            let updateScore = Score(theme: theme, maxScore: number)
-            scoreRepository.add(updateScore)
+            let newScore = Score(theme: theme, maxScore: number)
+            repository.add(newScore)
             return
         }
-        newScoreGreaterOld(number: number, index: currentIndex)
+        newScoreLargetOld(number: number, index: currentIndex)
     }
     
     private func update(_ score: Score) {
-        scoreRepository.update(score)
+        repository.update(score)
     }
     
-    private func newScoreGreaterOld(number: Int, index: Int) {
+    private func newScoreLargetOld(number: Int, index: Int) {
         if number > scoreViewModels[index].score.maxScore {
             var updateScore = scoreViewModels[index].score
             updateScore.maxScore = number
