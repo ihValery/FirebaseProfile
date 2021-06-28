@@ -30,7 +30,8 @@ class SessionFirebase: ObservableObject {
     }
     
     func getUrlAndName() {
-        let currentDoc = store.whereField("uid", isEqualTo: user?.uid ?? "Не нашел данный uid")
+        guard let userId = user?.uid else { return }
+        let currentDoc = store.whereField("uid", isEqualTo: userId)
         
         currentDoc.getDocuments() { querySnapshot, error in
             if let error = error {
@@ -67,6 +68,7 @@ class SessionFirebase: ObservableObject {
                     case .success(let url):
                         self?.store.document(result.user.uid)
                             .setData(["userName" : name,
+                                      "email" : email,
                                       "avatarURL" : url.absoluteString,
                                       "uid" : result.user.uid]) { error in
                                 if let error = error {
